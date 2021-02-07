@@ -21,7 +21,7 @@ jobs:
     - name: Copy test execution videos
       run: |
         mkdir public
-        cp -r /__w/github-report/github-report/cypress/videos/examples/ public/videos
+        cp -r cypress/videos public/videos
     - name: Merge test results into one
       run: npm run report:merge
     - name: Generate HTML report
