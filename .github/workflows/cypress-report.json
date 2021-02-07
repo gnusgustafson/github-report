@@ -1,13 +1,14 @@
 name: Create Cypress report
 on:
-    push:
+  push:
     branches:
-    -'master'
+      - 'master'
 jobs:
-    cypress - run:
-    runs - on: ubuntu - 16.04# Cypress Docker image with Chrome v78# and Firefox v70 pre - installed
-container: cypress / browsers: node12 .13 .0 - chrome78 - ff70
-steps:
+  cypress-e2e-chrome81:
+  name: Run on Chrome 81
+  runs-on: ubuntu-18.04
+  container: cypress/browser:node12.18.0-chrome83-ff77
+  steps:
     - uses: actions/checkout@v2
     - name: Install a project with a clean slate
       run: |
@@ -28,6 +29,8 @@ steps:
       run: npm run report:generate
     - name: Deploy report page
       uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
