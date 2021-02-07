@@ -56,22 +56,15 @@ context('Viewport', () => {
         // The viewport will be reset back to the default dimensions
         // in between tests (the  default can be set in cypress.json)
     })
-    it('cy.title() - get the title', () => {
+    it('shall be displayed', () => {
         // https://on.cypress.io/title
         cy.title().should('include', 'Kitchen Sink')
     })
 
-    it('cy.title() - get the title', () => {
-        // https://on.cypress.io/title
-        cy.title().should('include', 'Kitchen Sink')
-    })
-    it('cy.title() - get the title', () => {
+    it('This one tooo!!', () => {
         // https://on.cypress.io/title
         cy.title().should('include', 'Kitchen Sink')
     })
 
-    it('cy.title() - get the title', () => {
-        // https://on.cypress.io/title
-        cy.title().should('include', 'Kitchen Sink')
-    })
+
 })
