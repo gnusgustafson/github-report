@@ -56,15 +56,17 @@ context('Viewport', () => {
         // The viewport will be reset back to the default dimensions
         // in between tests (the  default can be set in cypress.json)
     })
-    it('shall be displayed', () => {
+    it('Will this one be displayed??', () => {
         // https://on.cypress.io/title
         cy.title().should('include', 'Kitchen Sink')
     })
 
-    it('This one tooo!!', () => {
+    it('Lets find out', () => {
         // https://on.cypress.io/title
         cy.title().should('include', 'Kitchen Sink')
     })
+
+
 
 
 })
