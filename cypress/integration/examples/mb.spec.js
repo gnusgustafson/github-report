@@ -18,6 +18,11 @@ context('Viewport', () => {
         cy.get('.elementor-element-d9oe17i > .elementor-widget-container > .elementor-heading-title').should('contain', 'Magnus')
     })
 
+    it('Header', () => {
+        cy.get('#menu-item-29 > a').click()
+        cy.get('.elementor-element-d9oe17i > .elementor-widget-container > .elementor-heading-title').should('contain', 'Magnus')
+    })
+
 
 
 
