@@ -4,5 +4,7 @@
         "configFile": "reporter-config.json"
     },
     "defaultCommandTimeout": 25000,
-    "projectId": "mq78om"
+
+    "projectId": "mq78om",
+    "env": { "cypress_record_key": "ab925542-7174-49d2-b391-a67d6a0915e1" }
 }
