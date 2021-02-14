@@ -3,5 +3,6 @@
     "reporterOptions": {
         "configFile": "reporter-config.json"
     },
-    "defaultCommandTimeout": 25000
+    "defaultCommandTimeout": 25000,
+    "projectId": "mq78om"
 }
