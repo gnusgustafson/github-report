@@ -4,9 +4,9 @@ on:
     branches:
       - 'test'
 jobs:
-  test:
-    name: Cypress run
+  cypress-run:
     runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -17,16 +17,16 @@ jobs:
         # run 3 copies of the current job in parallel
         containers: [1, 2, 3]
     steps:
-      - name: Checkout
-      - uses: actions/checkout@v2
-    - name: Install a project with a clean slate
-       run: |
-        npm ci
-        $(npm bin)/cypress cache path
-        $(npm bin)/cypress cache list
-        $(npm bin)/cypress verify
-    - name: Run Cypress tests
-      run: npm run test:chrome
+        - uses: actions/checkout@v2
+        - name: Install a project with a clean slate
+          run: |
+            npm ci
+            $(npm bin)/cypress cache path
+            $(npm bin)/cypress cache list
+            $(npm bin)/cypress verify
+        - name: Run Cypress tests
+          run: npm run test:chrome
+      continue-on-error: true
       continue-on-error: true
         with:
           record: true
