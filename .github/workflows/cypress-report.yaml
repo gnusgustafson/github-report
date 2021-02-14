@@ -2,12 +2,11 @@ name: Create Cypress report
 on:
   push:
     branches:
-      - 'master'
       - 'test'
 jobs:
   test:
     name: Cypress run
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -18,23 +17,19 @@ jobs:
         # run 3 copies of the current job in parallel
         containers: [1, 2, 3]
     steps:
-    - uses: actions/checkout@v2
-    - name: Install a project with a clean slate
-      run: |
-        npm ci
-        $(npm bin)/cypress cache path
-        $(npm bin)/cypress cache list
-        $(npm bin)/cypress verify
+      - name: Checkout
+        uses: actions/checkout@v2
 
       # because of "record" and "parallel" parameters
       # these containers will load balance all found tests among themselves
-    - name: Run Cypress tests
-      run: npm run test:chrome
-      continue-on-error: true
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
           record: true
           parallel: true
+          config-file: cypress.json
           group: 'Actions example'
+          browser: chrome
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ab925542-7174-49d2-b391-a67d6a0915e1
