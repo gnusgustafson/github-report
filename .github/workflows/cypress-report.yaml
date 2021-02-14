@@ -8,7 +8,6 @@ jobs:
   test:
     name: Cypress run
     runs-on: ubuntu-16.04
-    container: cypress/browsers:node12.18.3-chrome87-ff82
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -32,7 +31,7 @@ jobs:
           group: 'Actions example'
         env:
           # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ab925542-7174-49d2-b391-a67d6a0915e1
+          
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
