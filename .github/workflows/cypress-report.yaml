@@ -30,10 +30,6 @@ jobs:
           config-file: cypress.json
           group: 'Actions example'
           browser: chrome
-      - name: Copy test execution videos
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ab925542-7174-49d2-b391-a67d6a0915e1
