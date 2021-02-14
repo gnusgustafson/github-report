@@ -29,6 +29,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          parallel: true
           config-file: cypress.json
           group: 'Actions example'
           browser: chrome
