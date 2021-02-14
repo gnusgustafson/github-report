@@ -6,8 +6,7 @@ on:
 jobs:
   test:
     name: Cypress run
-    runs-on: ubuntu-16.04
-    container: cypress/browsers:node12.18.3-chrome87-ff82
+    runs-on: ubuntu-latest
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -18,17 +17,11 @@ jobs:
         # run 3 copies of the current job in parallel
         containers: [1, 2, 3]
     steps:
-      - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v2
-        with:
-          browser: chrome
+      - name: Checkout
+        uses: cypress-io/github-action@v2
 
       # because of "record" and "parallel" parameters
       # these containers will load balance all found tests among themselves
-      - name: Copy test execution videos
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
